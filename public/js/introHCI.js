@@ -28,7 +28,7 @@ function addProjectDetails(e) {
 
 	console.log("User clicked on project " + idNumber);
 
-	var URL = 'http://localhost:3000/project/' + idNumber;
+	var URL = '/project/' + idNumber;
 
 	console.log(URL);
 
@@ -53,7 +53,7 @@ function addProjectDetails(e) {
  */
 function randomizeColors(e) {
 	console.log("User clicked on color button");
-	var paletteURL = 'http://localhost:3000/palette'; 
+	var paletteURL = '/palette'; 
 	
 	function changeColor(paletteResult){
 		console.log(paletteResult);
