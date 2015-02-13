@@ -27,6 +27,24 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+
+	var URL = 'http://localhost:3000/project/' + idNumber;
+
+	console.log(URL);
+
+	function addProject(result){
+		console.log(result);
+
+		var projectHTML = '<img src="' + result['image'] + '"class="detailsImage">' + 
+			'<h3>' + result['date'] + '</h3>' + '<p>' + result['summary'] + '</p>';
+		
+		var selectorHTML = "#" + projectID + " .details";
+
+		$(selectorHTML).html(projectHTML);
+		// 	$("#project - description").html(result['summary']);
+	}
+ 
+	$.get(URL, addProject); 
 }
 
 /*
@@ -35,4 +53,20 @@ function addProjectDetails(e) {
  */
 function randomizeColors(e) {
 	console.log("User clicked on color button");
+	var paletteURL = 'http://localhost:3000/palette'; 
+	
+	function changeColor(paletteResult){
+		console.log(paletteResult);
+		var colors = paletteResult['colors']['hex'];
+		console.log(colors);
+		$('body').css('background-color', colors[0]);
+		$('.thumbnail').css('background-color', colors[1]);
+		$('h1, h2, h3, h4, h5, h5').css('color', colors[2]);
+		$('p').css('color', colors[3]);
+		$('.project img').css('opacity', .75);
+	}
+
+	$.get(paletteURL, changeColor); 
 }
+
+
